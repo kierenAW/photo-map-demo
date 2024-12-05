@@ -136,6 +136,11 @@ async function loadPhotoMarkers() {
                 handlePhotoSelection(photo, marker);
             });
 
+            // Center map when popup is opened
+            marker.on('popupopen', () => {
+                centerMapOnPhoto(photo.lat, photo.lng);
+            });
+
             // Store marker reference
             markers.set(photo.filename, marker);
 
